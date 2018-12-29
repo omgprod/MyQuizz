@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz - {{ template_name }} {% endblock %}
+	
+{% block body %}
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button class="btn btn-success btn-block">{{ button_label|default('Créer ce quizz') }}</button>	
+	{{ form_end(form) }}
+{% endblock %}

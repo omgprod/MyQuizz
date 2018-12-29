@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz - {{ template_name }}!{% endblock %}
+
+{% block body %}
+  <table class="table usersIndex">
+        <thead>
+            <tr>
+                <th>Quizz</th>
+                <th>Score</th>
+                <th>Enregisté le</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for result in results %}
+                <tr>
+                    {% if app.user.id == result.user.id %}
+                        <td>{{ result.quizz.title }}</td>
+                        <td>{{ result.score }} /10</td>
+                        <td>{{ result.createdAt|date("d/m/Y \à H:i:s") }}</td>                                        
+                    {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

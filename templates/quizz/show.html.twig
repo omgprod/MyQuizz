@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('playing')}}
+{% endblock %}
+
+{% block body %}
+	<div class="card">
+		<div class="card-body">
+			<form method="post">
+				{% if inputReponse is null %}
+					<h5 class="card-header">{{ quizz.questions[count].question }}</h5>
+					{% for reponses in quizz.questions[count].reponses|shuffle %}
+						<label class="container">
+							<input type="radio" value="{{ reponses.id }}" name="getAnswer"/>{{ reponses.reponse }}
+							<span class="checkmark"></span>
+						</label>
+					{% endfor %}
+					<input hidden value="{{ count }}" name="count">
+					<input hidden value="{{ score }}" name="score">
+					<input type="submit" class="btn btn-primary" value="Valider">
+			</form>
+				{% else %}
+					{% if message == "Bonne réponse ✔" %}
+						<div class="card-header successMsg">
+							{{ message }}
+						</div>
+					{% else %}
+						<div class="errorMsg">
+							{{ message }}
+							{% for reponses in quizz.questions[count].reponses %}
+								{% if reponses.reponseExpected == 1 %}
+									<p class="wrongAnswer">La bonne réponse est : {{ reponses.reponse }}</p>
+								{% endif %}
+							{% endfor %}
+						</div>						
+					{% endif %}
+					
+					<form>
+						<input hidden value="{{ count }}" name="count">
+						<input hidden value="{{ score }}" name="score">
+						<input hidden value="{{ i }}" name="i">
+						<input type="submit" class="btn btn-primary" value="Prochaine question">
+					</form>
+				{% endif %}
+
+			<div class="score">Vous en êtes à la question {{ i }} /{{ totalQuestion }}</div>
+		</div>
+	</div>
+{% endblock %}

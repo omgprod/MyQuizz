@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Quizz - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('login')}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="editPage">Edition de profil</h1>
+    	{{ form_start(form) }}
+    	{{ form_widget(form) }}
+    	<button class="btn btn-success btn-block">{{ button_label|default('Editer les changements') }}</button>
+    	{{ form_end(form) }}
+
+		<form class="paddingForm" method="post" action="{{ path('user_delete', {'id': user.id}) }}">
+   			<input type="hidden" name="_method" value="DELETE">
+    		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    		<button class="btn btn-danger btn-block">Supprimer mon compte</button>
+		</form>
+{% endblock %}

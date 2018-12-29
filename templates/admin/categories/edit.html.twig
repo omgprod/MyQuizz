@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="adminPage">Edit Categories</h1>
+    <a class="createSize float-right" href="{{ path('admin_categories') }}">Back to Categories</a>
+	<div class="categoriesEdit">
+		{{ form_start(form) }}
+		    {{ form_widget(form) }}
+		    <button class="btn btn-success btn-block">{{ button_label|default('Update') }}</button>
+		{{ form_end(form) }}
+
+		<div class="categoriesEditForm">
+			<form method="post" action="{{ path('admin_categories_delete', {'id': category.id}) }}">
+			    <input type="hidden" name="_method" value="DELETE">
+			    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+			    <button class="btn btn-danger btn-block">Delete</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

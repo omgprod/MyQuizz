@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app')}}
+    {{ encore_entry_link_tags('playing')}}
+    {{ encore_entry_link_tags('score')}}
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <h5 class="card-header">Votre score final est de {{score}} / 10 </h5>
+        <div class="card-body">
+            {% if score == 0 %}
+                <img class="scoreImg" src="https://i.imgur.com/heqnajl.png" alt="scoreImg">
+                <p class="align-center">Et bien, et bien...</p>
+                <p>Je pense que vous devriez réviser avant de rejouer..</p>
+            {% else %}
+                {% if score <= 3 %}
+                    <img class="scoreImg" src="https://i.imgur.com/cqKCSMd.png" alt="scoreImg">
+                    <p class="align-center">La voie de la médiocrité est derrière vous.</p>
+                    <p>Cependant vous n'en étiez pas loin !</p>
+                {% else %}
+                    {% if score <= 5 %}
+                        <img class="scoreImg" src="https://i.imgur.com/DT992gY.png" alt="scoreImg">
+                        <p class="align-center">Mouais.. Bof !</p>
+                        <p>C'est en pratiquant que l'on s'améliore, continuez !</p>
+                    {% else %}
+                        {% if score <= 9 %}
+                            <img class="scoreImg" src="https://i.imgur.com/kM10Pzk.png" alt="scoreImg">
+                            <p class="align-center">Bravo à vous !</p>
+                            <p>Vous étiez proche du but, n'abandonnez pas !</p>
+                        {% else %}
+                            {% if score == 10 %}
+                                <img class="scoreImg" src="https://i.imgur.com/t179DFi.png" alt="scoreImg">
+                                <p class="align-center">Amazing !</p>
+                                <p>Vous êtes définitivement incollable sur le sujet</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <a class="btn btn-success" href="{{ path('quizz')}}">Retourner sur la page des quizz</a>
+    </div>
+{% endblock %}

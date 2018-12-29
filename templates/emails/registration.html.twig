@@ -1,0 +1,11 @@
+{% block body %}
+	<div style="text-align:center;background:url('http://frictionless.xyz/blog/wp-content/uploads/2016/12/cropped-Blog-bg-1.jpg');background-size:cover;">
+  		<h3 style="padding:40px;font-size:30px;color:black;background: linear-gradient(to bottom, #B93642, #DAA39A);color:black;">Merci d'avoir rejoint la communauté MyQuizz !</h3>
+    	<p style="font-weight:bold;font-size:30px;">Bienvenue sur MyQuizz {{ name }} !</p>
+
+  		<p style="margin: 30px 0 30px 0;">Pour valider ton inscription, clique sur le lien suivant :</p>
+    	<a style="appearance:button;background:tomato;color:white;padding:8px;text-decoration:none;font-size:25px;font-weight:bold;border-radius:25px;" href="{{ url('user_token', { id : id } ) }}">Valider mon inscription</a>.
+  		<p style="font-size:25px;font-weight:bold;margin-bottom:100px">A trés bientot sur MyQuizz !</p>
+  		<p style="background:darkslateblue;color:white;padding:30px;"> Copyrights © My Quizz 2018-2019 - All rights reserved</p>
+	</div>
+{% endblock %}

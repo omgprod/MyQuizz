@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="adminPage">Edit Users</h1>
+    <a class="createSize float-right" href="{{ path('admin_users') }}">Back to Users</a>
+	<div class="usersEdit">
+		{{ form_start(form) }}
+		    {{ form_widget(form) }}
+		    <button class="btn btn-success btn-block">{{ button_label|default('Update') }}</button>
+		{{ form_end(form) }}
+		
+		<div class="usersEditForm">
+			<form method="post" action="{{ path('admin_users_delete', {'id': user.id}) }}">
+			    <input type="hidden" name="_method" value="DELETE">
+			    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+			    <button class="btn btn-danger btn-block">Delete</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

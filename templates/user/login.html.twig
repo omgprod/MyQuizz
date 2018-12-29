@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Quizz - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+  {{ encore_entry_link_tags('register') }}
+  {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
+{% block body %}
+	<h1 class="loginMsg">Connexion</h1>
+	<div id="login-row" class="row justify-content-center align-items-center">
+		<div id="login-column" class="col-md-6">
+			<div class="box">
+				<div class="shape1 loginShape"></div>
+				<div class="shape2 loginShape"></div>
+				<div class="shape3 loginShape"></div>
+				<div class="shape4 loginShape"></div>
+				<div class="shape5 loginShape"></div>
+				<div class="shape6 loginShape"></div>
+				<div class="shape7 loginShape"></div>
+				<div class="float">
+					<div class="form">
+						<form action="{{ path('user_login')}}" method="POST">
+							<div class="form-group">
+								<input type="text" class="form-control loginEmail" name="_username" placeholder="Email" required>
+								<input type="password" class="form-control" name="_password" placeholder="Mot de passe" required>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-success btn-block" type="submit">Se connecter</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="registerPaddingBottom"></div>
+{% endblock %}

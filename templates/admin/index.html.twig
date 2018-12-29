@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz {{ template_name }}!{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+	<table class="table adminIndex">
+	    <thead>
+	        <tr>
+	        	<th>Update Catégories</th>
+	        	<th>Update Users</th>
+	        	<th>Contact</th>
+	        </tr>
+	    </thead>
+	    
+		<tr>
+			<td><a href="{{ path('admin_categories')}}">Catégories List</a></td>
+			<td><a href="{{ path('admin_users')}}">Users List</a></td>
+			<td><a href="{{ path('admin_contact')}}">Contact users</a></td>
+		</tr>
+	</table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuizz {{ template_name }}!{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app')}}
+	{{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+	<form method="POST">
+		<table class="table adminIndex">
+		    <thead>
+		        <tr>
+		        	<th>Send email to All Users</th>
+		        	<th>Send email to Users AFK</th>
+		        	<th>Send email to Users who didn't play X quizz</th>
+		        </tr>
+		    </thead>
+		    
+			<tr>
+				<td><button class="btn btn-success" name="globalMail">Send Email</button></td>
+				<td><button class="btn btn-success">Send Email</button></td>
+				<td><button class="btn btn-success">Send Email</button></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

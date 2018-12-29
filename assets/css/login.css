@@ -1,0 +1,38 @@
+.loginMsg {
+    text-align: center;
+    color: tomato;
+    font-size: 80px;
+    font-weight: bold;
+    margin: 50px 0 -120px -50px;
+}
+
+/*
+|------------------------
+|   Login Form 
+|------------------------
+*/
+
+.loginEmail {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.loginShape {
+    background-color: tomato;
+}
+
+/*
+|------------------------
+|   Edit Form 
+|------------------------
+*/
+
+.editPage {
+	text-align: center;
+	margin: 84px 0 14px 0;
+    color: gold;
+}
+
+.paddingForm {
+	margin: 20px 0 185px 0;
+}

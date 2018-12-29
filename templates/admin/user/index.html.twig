@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app')}}
+    {{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="adminPage">User index</h1>
+    <a class="createSize float-right" href="{{ path('admin') }}">Back to Index</a>    
+    <a class="createSize" href="{{ path('admin_users_create') }}">Create new User</a>
+    <table class="table usersIndex">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Roles</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_users_edit', {'id': user.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

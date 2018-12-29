@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ template_name }} {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app')}}
+    {{ encore_entry_link_tags('admin')}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="adminPage">Categories index</h1>
+    <a class="createSize" href="{{ path('admin_categories_create') }}">Create new Categorie</a>
+    <a class="createSize float-right" href="{{ path('admin') }}">Back to Index</a>
+
+    <table class="table categoriesIndex">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.title }}</td>
+                <td>
+                    <a href="{{ path('admin_categories_edit', {'id': category.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

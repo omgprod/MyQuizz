@@ -1,0 +1,22 @@
+table {
+    margin-top: 50px;
+}
+
+.linkColor {
+    color: tomato;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.linkColor:hover {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.imgSize { 
+	width:300px; 
+	height:150px;
+}
+
+.paddingBottom { margin-bottom: 75px; }
